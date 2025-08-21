@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">RS485 to Android</string>
+    <string name="title_activity_settings">Настройки</string>
+
+    <!-- TODO: Добавить строки для интерфейса настроек -->
+    <string name="settings_baud_rate">Скорость соединения</string>
+    <string name="settings_data_bits">Биты данных</string>
+    <string name="settings_stop_bits">Стоп-биты</string>
+    <string name="settings_parity">Чётность</string>
+
+    <!-- TODO: Добавить строки для значений чётности -->
+    <string name="parity_none">Нет</string>
+    <string name="parity_odd">Нечётная</string>
+    <string name="parity_even">Чётная</string>
+</resources>

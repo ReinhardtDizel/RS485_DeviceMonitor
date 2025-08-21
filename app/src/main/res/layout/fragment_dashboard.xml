@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#111"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <!-- Название устройства -->
+            <TextView
+                android:id="@+id/deviceNameView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ТРМ201"
+                android:textColor="#0F0"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Основные параметры -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Основные параметры"
+                android:textColor="#0F0"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Температура -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Температура:"
+                    android:textColor="#0F0"
+                    android:textSize="14sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/temperatureValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--.-°C"
+                    android:textColor="#0F0"
+                    android:textSize="14sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- Тип датчика -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Тип датчика:"
+                    android:textColor="#0F0"
+                    android:textSize="14sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/sensorTypeValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="14sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- Статус -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Статус:"
+                    android:textColor="#0F0"
+                    android:textSize="14sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/statusValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="14sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- Параметры нагрева -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Параметры нагрева"
+                android:textColor="#0F0"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- SL_L: Нижний предел шкалы -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="SL_L:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/slLValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- SL_H: Верхний предел шкалы -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="SL_H:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/slHValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- CmP: Тип регулятора -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CmP:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/cmpValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- HYS: Гистерезис -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="HYS:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/hysValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- don: Задержка включения -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="don:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/donValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- doF: Задержка выключения -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="doF:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/dofValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- ton: Время включения -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="ton:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/tonValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- toF: Время выключения -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="toF:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/tofValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- oEr: Ошибка датчика -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="oEr:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/oerValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- dAC: Тип выхода -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="dAC:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/dacValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- An_L: Нижняя граница аналогового выхода -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="An_L:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/anLValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- An_H: Верхняя граница аналогового выхода -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="An_H:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/anHValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- CtL: Тип управления -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="CtL:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/ctlValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- Параметры обмена -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Параметры обмена"
+                android:textColor="#0F0"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Prot: Протокол обмена -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Prot:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/protValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- bPS: Скорость обмена -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="bPS:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/bpsValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- A.Len: Длина сетевого адреса -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="A.Len:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/aLenValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- Addr: Базовый адрес прибора -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Addr:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/addrValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- rSdL: Задержка ответа -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="rSdL:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/rSdLValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- Len: Длина слова данных -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Len:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/lenValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- PrtY: Четность -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="PrtY:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/prtYValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- Sbit: Количество стоп-бит -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Sbit:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/sbitValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- n.Err: Код сетевой ошибки -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="n.Err:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/nErrValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- Командные регистры -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Командные регистры"
+                android:textColor="#0F0"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- PRTL: Команда смены протокола -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="PRTL:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/prtlValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- APLY: Команда применения параметров -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="APLY:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/aplyValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+            <!-- INIT: Команда перезагрузки -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="INIT:"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"/>
+
+                <TextView
+                    android:id="@+id/initValue"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="--"
+                    android:textColor="#0F0"
+                    android:textSize="12sp"
+                    android:fontFamily="monospace"
+                    android:gravity="end"
+                    android:background="@drawable/border_green"
+                    android:padding="4dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
