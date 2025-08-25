@@ -1,0 +1,10 @@
+{
+  "name": "CH340 USB-RS485 Adapter",
+  "vendorId": 6790,
+  "productIds": [29987, 21795],
+  "defaultBaudRate": 9600,
+  "defaultDataBits": 8,
+  "defaultStopBits": 2,
+  "defaultParity": 0,
+  "initCommands": []
+}

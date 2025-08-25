@@ -1,0 +1,10 @@
+{
+  "name": "FTDI USB-RS485 Adapter",
+  "vendorId": 1027,
+  "productIds": [24577, 24592],
+  "defaultBaudRate": 9600,
+  "defaultDataBits": 8,
+  "defaultStopBits": 1,
+  "defaultParity": 0,
+  "initCommands": []
+}

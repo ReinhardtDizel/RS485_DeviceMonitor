@@ -1,0 +1,32 @@
+{
+  "name": "CP2102 USB-RS485 Adapter",
+  "vendorId": 4292,
+  "productIds": [60000],
+  "defaultBaudRate": 9600,
+  "defaultDataBits": 8,
+  "defaultStopBits": 1,
+  "defaultParity": 0,
+  "initCommands": [
+    {
+      "requestType": 64,
+      "request": 0,
+      "value": 0,
+      "index": 0,
+      "data": []
+    },
+    {
+      "requestType": 64,
+      "request": 3,
+      "value": 4138,
+      "index": 0,
+      "data": []
+    },
+    {
+      "requestType": 64,
+      "request": 1,
+      "value": 257,
+      "index": 0,
+      "data": []
+    }
+  ]
+}

@@ -1,0 +1,662 @@
+{
+  "deviceModel": "ТРМ201",
+  "version": "V03.00xx",
+  "parameterGroups": [
+    {
+      "groupCode": "LvoP_Oper",
+      "groupName": "Оперативные параметры (только чтение)",
+      "parameters": [
+        {
+          "code": "STAT",
+          "modbusAddress": "0x0000",
+          "name": "Регистр статуса",
+          "description": "Регистр статуса прибора. Назначение битов см. в таблице 'Назначение битов регистра STAT'",
+          "dataType": "binary",
+          "range": "16 бит",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "R"
+        },
+        {
+          "code": "PV",
+          "modbusAddress": "0x0001",
+          "name": "Измеренная величина",
+          "description": "Текущее измеренное значение",
+          "dataType": "int16",
+          "range": "Определяется датчиком",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "R"
+        },
+        {
+          "code": "DEV",
+          "modbusAddress": "0x1000-0x1003",
+          "name": "Тип прибора",
+          "description": "Строка, идентифицирующая тип прибора",
+          "dataType": "string",
+          "range": "Char[8]",
+          "unit": "",
+          "defaultValue": "ТРМ201",
+          "accessLevel": "R"
+        },
+        {
+          "code": "VER",
+          "modbusAddress": "0x1004-0x1007",
+          "name": "Версия прибора",
+          "description": "Строка, указывающая версию прошивки прибора",
+          "dataType": "string",
+          "range": "Char[8]",
+          "unit": "",
+          "defaultValue": "V03.00xx",
+          "accessLevel": "R"
+        },
+        {
+          "code": "STAT_Id",
+          "modbusAddress": "0x1008",
+          "name": "Регистр статуса (идентич.)",
+          "description": "Регистр статуса прибора (идентичный 0x0000). Назначение битов см. в таблице 'Назначение битов регистра STAT'",
+          "dataType": "binary",
+          "range": "16 бит",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "R"
+        },
+        {
+          "code": "PV_Float",
+          "modbusAddress": "0x1009-0x100A",
+          "name": "Измеренная величина (Float)",
+          "description": "Текущее измеренное значение в формате с плавающей точкой",
+          "dataType": "float32",
+          "range": "",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "R"
+        },
+        {
+          "code": "SP_Float",
+          "modbusAddress": "0x100B-0x100C",
+          "name": "Уставка регулятора (Float)",
+          "description": "Заданное значение уставки в формате с плавающей точкой",
+          "dataType": "float32",
+          "range": "",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "R"
+        }
+      ]
+    },
+    {
+      "groupCode": "LvoP_Work",
+      "groupName": "Рабочие параметры (чтение/запись)",
+      "parameters": [
+        {
+          "code": "SP",
+          "modbusAddress": "0x0002",
+          "name": "Уставка регулятора",
+          "description": "Заданное значение уставки",
+          "dataType": "int16",
+          "range": "Определяется параметрами SLL и SLH",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "r-L",
+          "modbusAddress": "0x0003",
+          "name": "Внешнее управление",
+          "description": "Перевод канала на внешнее управление",
+          "dataType": "enum",
+          "range": "0-1",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW",
+          "options": [
+            {"value": 0, "description": "Локальное управление"},
+            {"value": 1, "description": "Внешнее управление"}
+          ]
+        },
+        {
+          "code": "r-out",
+          "modbusAddress": "0x0004",
+          "name": "Выходной сигнал",
+          "description": "Значение выходного сигнала (0-1 для ключевого типа, 0.000-1.000 для аналогового)",
+          "dataType": "int16",
+          "range": "0-1000 (масштабируется)",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        }
+      ]
+    },
+    {
+      "groupCode": "Comm",
+      "groupName": "Параметры обмена",
+      "parameters": [
+        {
+          "code": "Prot",
+          "modbusAddress": "0x0100",
+          "name": "Протокол обмена",
+          "description": "Выбор протокола связи",
+          "dataType": "enum",
+          "range": "0-2",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW",
+          "options": [
+            {"value": 0, "description": "OWEN"},
+            {"value": 1, "description": "ModBus-RTU"},
+            {"value": 2, "description": "ModBus-ASCII"}
+          ]
+        },
+        {
+          "code": "bPS",
+          "modbusAddress": "0x0101",
+          "name": "Скорость обмена",
+          "description": "Скорость передачи данных по RS-485",
+          "dataType": "enum",
+          "range": "0-8",
+          "unit": "кбит/с",
+          "defaultValue": "",
+          "accessLevel": "RW",
+          "options": [
+            {"value": 0, "description": "2.4"},
+            {"value": 1, "description": "4.8"},
+            {"value": 2, "description": "9.6"},
+            {"value": 3, "description": "14.4"},
+            {"value": 4, "description": "19.2"},
+            {"value": 5, "description": "28.8"},
+            {"value": 6, "description": "38.4"},
+            {"value": 7, "description": "57.6"},
+            {"value": 8, "description": "115.2"}
+          ]
+        },
+        {
+          "code": "A.Len",
+          "modbusAddress": "0x0102",
+          "name": "Длина сетевого адреса",
+          "description": "Длина адреса устройства в сети (только для протокола ОВЕН)",
+          "dataType": "enum",
+          "range": "0-1",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW",
+          "options": [
+            {"value": 0, "description": "8 бит"},
+            {"value": 1, "description": "11 бит"}
+          ]
+        },
+        {
+          "code": "Addr",
+          "modbusAddress": "0x0103",
+          "name": "Базовый адрес прибора",
+          "description": "Сетевой адрес устройства",
+          "dataType": "uint16",
+          "range": "0-255 (Modbus), 0-2047 (ОВЕН)",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "rSdL",
+          "modbusAddress": "0x0104",
+          "name": "Задержка ответа",
+          "description": "Задержка ответа от прибора по RS-485",
+          "dataType": "uint16",
+          "range": "0-45",
+          "unit": "мс",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "Len",
+          "modbusAddress": "0x0105",
+          "name": "Длина слова данных",
+          "description": "Битовая длина данных",
+          "dataType": "enum",
+          "range": "0-1",
+          "unit": "бит",
+          "defaultValue": "",
+          "accessLevel": "RW",
+          "options": [
+            {"value": 0, "description": "7 бит"},
+            {"value": 1, "description": "8 бит"}
+          ]
+        },
+        {
+          "code": "PrtY",
+          "modbusAddress": "0x0106",
+          "name": "Четность",
+          "description": "Бит четности",
+          "dataType": "enum",
+          "range": "0-2",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW",
+          "options": [
+            {"value": 0, "description": "none (отсутствует)"},
+            {"value": 1, "description": "even (четный)"},
+            {"value": 2, "description": "odd (нечетный)"}
+          ]
+        },
+        {
+          "code": "Sbit",
+          "modbusAddress": "0x0107",
+          "name": "Стоп-биты",
+          "description": "Количество стоп-битов",
+          "dataType": "enum",
+          "range": "0-1",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW",
+          "options": [
+            {"value": 0, "description": "1 стоп-бит"},
+            {"value": 1, "description": "2 стоп-бита"}
+          ]
+        },
+        {
+          "code": "n.Err",
+          "modbusAddress": "0x0108",
+          "name": "Код сетевой ошибки",
+          "description": "Код последней сетевой ошибки (аналогично протоколу ОВЕН)",
+          "dataType": "hex word",
+          "range": "",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "R"
+        },
+        {
+          "code": "PRTL",
+          "modbusAddress": "0x0109",
+          "name": "Команда смены протокола",
+          "description": "Команда для применения нового протокола обмена",
+          "dataType": "uint16",
+          "range": "1",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "W"
+        },
+        {
+          "code": "APLY",
+          "modbusAddress": "0x010A",
+          "name": "Команда применения сетевых настроек",
+          "description": "Команда для применения новых сетевых параметров",
+          "dataType": "uint16",
+          "range": "1",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "W"
+        },
+        {
+          "code": "INIT",
+          "modbusAddress": "0x010B",
+          "name": "Рестарт прибора",
+          "description": "Команда перезагрузки прибора (аналог выкл/вкл питания)",
+          "dataType": "uint16",
+          "range": "1",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "W"
+        }
+      ]
+    },
+    {
+      "groupCode": "Lvin",
+      "groupName": "Параметры входов",
+      "parameters": [
+        {
+          "code": "in.t",
+          "modbusAddress": "0x0200",
+          "name": "Тип входного датчика",
+          "description": "Тип подключенного датчика или входного сигнала",
+          "dataType": "uint16",
+          "range": "1-26",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "dPt",
+          "modbusAddress": "0x0201",
+          "name": "Точность вывода температуры",
+          "description": "Количество знаков после запятой для отображения температуры",
+          "dataType": "uint16",
+          "range": "0-1",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "dP",
+          "modbusAddress": "0x0202",
+          "name": "Положение десятичной точки",
+          "description": "Позиция десятичного разделителя для отображаемых значений",
+          "dataType": "uint16",
+          "range": "0-3",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "in.L",
+          "modbusAddress": "0x0203",
+          "name": "Нижняя граница измерения",
+          "description": "Минимальное значение диапазона измерения",
+          "dataType": "int16",
+          "range": "-1999-9999",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "in.H",
+          "modbusAddress": "0x0204",
+          "name": "Верхняя граница измерения",
+          "description": "Максимальное значение диапазона измерения",
+          "dataType": "int16",
+          "range": "-1999-9999",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "SH",
+          "modbusAddress": "0x0205",
+          "name": "Сдвиг характеристики",
+          "description": "Коррекция смещения характеристики датчика",
+          "dataType": "int16",
+          "range": "-500-500",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "KU",
+          "modbusAddress": "0x0206",
+          "name": "Наклон характеристики",
+          "description": "Коррекция наклона характеристики датчика",
+          "dataType": "uint16",
+          "range": "500-2000 (масштабируется: 0.500-2.000)",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "Fb",
+          "modbusAddress": "0x0207",
+          "name": "Полоса фильтра",
+          "description": "Ширина полосы цифрового фильтра",
+          "dataType": "uint16",
+          "range": "0-9999",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "inF",
+          "modbusAddress": "0x0208",
+          "name": "Постоянная времени фильтра",
+          "description": "Постоянная времени цифрового фильтра",
+          "dataType": "uint16",
+          "range": "0-999",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "Sqr",
+          "modbusAddress": "0x0209",
+          "name": "Вычислитель квадратного корня",
+          "description": "Включение/выключение вычисления квадратного корня от входного сигнала",
+          "dataType": "enum",
+          "range": "0-1",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW",
+          "options": [
+            {"value": 0, "description": "выкл"},
+            {"value": 1, "description": "вкл"}
+          ]
+        }
+      ]
+    },
+    {
+      "groupCode": "Adv",
+      "groupName": "Параметры индикации",
+      "parameters": [
+        {
+          "code": "rESt",
+          "modbusAddress": "0x0300",
+          "name": "Время выхода из режима программирования",
+          "description": "Время автоматического выхода из меню настроек без активности",
+          "dataType": "uint16",
+          "range": "5-100",
+          "unit": "с",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        }
+      ]
+    },
+    {
+      "groupCode": "LvoU",
+      "groupName": "Настройки регулирования и регистрации",
+      "parameters": [
+        {
+          "code": "SL.L",
+          "modbusAddress": "0x0400",
+          "name": "Нижняя граница уставки",
+          "description": "Минимальное допустимое значение уставки",
+          "dataType": "int16",
+          "range": "Определяется диапазоном датчика",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "SL.H",
+          "modbusAddress": "0x0401",
+          "name": "Верхняя граница уставки",
+          "description": "Максимальное допустимое значение уставки",
+          "dataType": "int16",
+          "range": "Определяется диапазоном датчика",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "CmP",
+          "modbusAddress": "0x0402",
+          "name": "Тип логики компаратора",
+          "description": "Выбор алгоритма работы регулятора",
+          "dataType": "enum",
+          "range": "0-4",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW",
+          "options": [
+            {"value": 0, "description": "выкл"},
+            {"value": 1, "description": "нагреватель"},
+            {"value": 2, "description": "холодильник"},
+            {"value": 3, "description": "П-образная"},
+            {"value": 4, "description": "U-образная"}
+          ]
+        },
+        {
+          "code": "HYS",
+          "modbusAddress": "0x0403",
+          "name": "Гистерезис компаратора",
+          "description": "Величина гистерезиса для компаратора",
+          "dataType": "uint16",
+          "range": "0-9999",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "don",
+          "modbusAddress": "0x0404",
+          "name": "Задержка включения",
+          "description": "Задержка включения компаратора",
+          "dataType": "uint16",
+          "range": "0-250",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "doF",
+          "modbusAddress": "0x0405",
+          "name": "Задержка выключения",
+          "description": "Задержка выключения компаратора",
+          "dataType": "uint16",
+          "range": "0-250",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "ton",
+          "modbusAddress": "0x0406",
+          "name": "Мин. время включения",
+          "description": "Минимальное время удержания компаратора во включенном состоянии",
+          "dataType": "uint16",
+          "range": "0-250",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "toF",
+          "modbusAddress": "0x0407",
+          "name": "Мин. время выключения",
+          "description": "Минимальное время удержания компаратора в выключенном состоянии",
+          "dataType": "uint16",
+          "range": "0-250",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "oEr",
+          "modbusAddress": "0x0408",
+          "name": "Состояние выхода при ошибке",
+          "description": "Поведение выхода при обнаружении ошибки",
+          "dataType": "enum",
+          "range": "0-1",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW",
+          "options": [
+            {"value": 0, "description": "выкл"},
+            {"value": 1, "description": "вкл"}
+          ]
+        },
+        {
+          "code": "dAC",
+          "modbusAddress": "0x0409",
+          "name": "Режим работы ЦАП",
+          "description": "Режим работы цифро-аналогового преобразователя",
+          "dataType": "enum",
+          "range": "0-1",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW",
+          "options": [
+            {"value": 0, "description": "регистратор"},
+            {"value": 1, "description": "П-регулятор"}
+          ]
+        },
+        {
+          "code": "An.L",
+          "modbusAddress": "0x040A",
+          "name": "Нижняя граница регистрации ЦАП",
+          "description": "Нижний предел выходного диапазона ЦАП",
+          "dataType": "int16",
+          "range": "Определяется диапазоном датчика",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "An.H",
+          "modbusAddress": "0x040B",
+          "name": "Верхняя граница регистрации ЦАП",
+          "description": "Верхний предел выходного диапазона ЦАП",
+          "dataType": "int16",
+          "range": "Определяется диапазоном датчика",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "CtL",
+          "modbusAddress": "0x040C",
+          "name": "Способ управления",
+          "description": "Выбор алгоритма управления выходом",
+          "dataType": "enum",
+          "range": "0-1",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW",
+          "options": [
+            {"value": 0, "description": "нагреватель"},
+            {"value": 1, "description": "холодильник"}
+          ]
+        },
+        {
+          "code": "XP",
+          "modbusAddress": "0x040D",
+          "name": "Полоса пропорциональности",
+          "description": "Ширина зоны пропорционального регулирования",
+          "dataType": "uint16",
+          "range": "2-9999",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        }
+      ]
+    },
+    {
+      "groupCode": "SECr",
+      "groupName": "Параметры секретности",
+      "parameters": [
+        {
+          "code": "oAPt",
+          "modbusAddress": "0x0700",
+          "name": "Защита от просмотра",
+          "description": "Уровень защиты параметров от просмотра",
+          "dataType": "uint16",
+          "range": "0-2",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "wtPt",
+          "modbusAddress": "0x0701",
+          "name": "Защита от изменения",
+          "description": "Уровень защиты параметров от изменения",
+          "dataType": "uint16",
+          "range": "0-2",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW"
+        },
+        {
+          "code": "EdPt",
+          "modbusAddress": "0x0702",
+          "name": "Защита отдельных параметров",
+          "description": "Включение/выключение защиты отдельных параметров от просмотра и изменений",
+          "dataType": "enum",
+          "range": "0-1",
+          "unit": "",
+          "defaultValue": "",
+          "accessLevel": "RW",
+          "options": [
+            {"value": 0, "description": "выкл"},
+            {"value": 1, "description": "вкл"}
+          ]
+        }
+      ]
+    }
+  ]
+}

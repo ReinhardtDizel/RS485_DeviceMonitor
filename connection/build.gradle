@@ -31,6 +31,13 @@ android {
 
 dependencies {
 
+    testImplementation libs.junit
+    testImplementation libs.mockito.core.v451
+    testImplementation libs.json
+    // Hilt для core модуля
+    implementation libs.hilt.android.v244
+    implementation project(':core')
+    implementation libs.json
     implementation libs.usb.serial.for1.android
     implementation libs.core.ktx
     implementation libs.appcompat

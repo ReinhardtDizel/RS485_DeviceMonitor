@@ -1,0 +1,1941 @@
+{
+  "deviceModel": "EI-9011",
+  "version": "3.1",
+  "parameterGroups": [
+    {
+      "groupCode": "A",
+      "groupName": "Инициализация",
+      "parameters": [
+        {
+          "code": "A1-01",
+          "modbusAddress": "",
+          "name": "Уровень доступа к константам",
+          "description": "Определяет уровень доступа для изменения констант",
+          "dataType": "enum",
+          "range": "0-4",
+          "unit": "",
+          "defaultValue": "2",
+          "accessLevel": "Б",
+          "options": [
+            {"value": 0, "description": "Только работа"},
+            {"value": 1, "description": "Константы пользователя"},
+            {"value": 2, "description": "Быстрый пуск (Б)"},
+            {"value": 3, "description": "Основной (О)"},
+            {"value": 4, "description": "Расширенный (Р)"}
+          ]
+        },
+        {
+          "code": "A1-02",
+          "modbusAddress": "",
+          "name": "Выбор режима работы",
+          "description": "Выбор метода управления преобразователем",
+          "dataType": "enum",
+          "range": "0-3",
+          "unit": "",
+          "defaultValue": "2",
+          "accessLevel": "Б",
+          "options": [
+            {"value": 0, "description": "Управление U/f"},
+            {"value": 1, "description": "Управление U/f с ИД"},
+            {"value": 2, "description": "Векторное в разомкнутой системе"},
+            {"value": 3, "description": "Векторное управление с ИД"}
+          ]
+        },
+        {
+          "code": "A1-03",
+          "modbusAddress": "",
+          "name": "Инициализация",
+          "description": "Сброс настроек к заводским значениям",
+          "dataType": "uint16",
+          "range": "0000-9999",
+          "unit": "",
+          "defaultValue": "0000",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "A1-04",
+          "modbusAddress": "",
+          "name": "Пароль 1",
+          "description": "Первый пароль доступа",
+          "dataType": "uint16",
+          "range": "0000-9999",
+          "unit": "",
+          "defaultValue": "0000",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "A1-05",
+          "modbusAddress": "",
+          "name": "Пароль 2",
+          "description": "Второй пароль доступа",
+          "dataType": "uint16",
+          "range": "0000-9999",
+          "unit": "",
+          "defaultValue": "0000",
+          "accessLevel": "Б"
+        }
+      ]
+    },
+    {
+      "groupCode": "B",
+      "groupName": "Выбор режима управления",
+      "parameters": [
+        {
+          "code": "B1-01",
+          "modbusAddress": "0180h",
+          "name": "Выбор источника задания частоты",
+          "description": "Определяет источник задания частоты",
+          "dataType": "enum",
+          "range": "0-3",
+          "unit": "",
+          "defaultValue": "1",
+          "accessLevel": "Б",
+          "options": [
+            {"value": 0, "description": "Пульт управления"},
+            {"value": 1, "description": "Клемма"},
+            {"value": 2, "description": "Последовательный порт"},
+            {"value": 3, "description": "Дополнительная плата"}
+          ]
+        },
+        {
+          "code": "B1-02",
+          "modbusAddress": "0181h",
+          "name": "Выбор источника команд ПУСК/СТОП",
+          "description": "Определяет источник команд управления",
+          "dataType": "enum",
+          "range": "0-3",
+          "unit": "",
+          "defaultValue": "1",
+          "accessLevel": "Б",
+          "options": [
+            {"value": 0, "description": "Пульт управления"},
+            {"value": 1, "description": "Клемма"},
+            {"value": 2, "description": "Последовательный порт"},
+            {"value": 3, "description": "Дополнительная плата"}
+          ]
+        },
+        {
+          "code": "B1-03",
+          "modbusAddress": "0182h",
+          "name": "Выбор метода останова",
+          "description": "Определяет метод остановки двигателя",
+          "dataType": "enum",
+          "range": "0-3",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "Б",
+          "options": [
+            {"value": 0, "description": "Плавный останов"},
+            {"value": 1, "description": "Инерционный останов"},
+            {"value": 2, "description": "Останов с торможением"},
+            {"value": 3, "description": "Выбор с таймером"}
+          ]
+        },
+        {
+          "code": "B1-04",
+          "modbusAddress": "0183h",
+          "name": "Запрещение реверса",
+          "description": "Разрешение/запрет реверсного вращения",
+          "dataType": "enum",
+          "range": "0-1",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "О",
+          "options": [
+            {"value": 0, "description": "Реверс разрешен"},
+            {"value": 1, "description": "Реверс запрещен"}
+          ]
+        },
+        {
+          "code": "B1-05",
+          "modbusAddress": "0184h",
+          "name": "Работа при нулевой скорости",
+          "description": "Определяет поведение при нулевой скорости",
+          "dataType": "enum",
+          "range": "0-3",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "Р",
+          "options": [
+            {"value": 0, "description": "Работа на заданной частоте"},
+            {"value": 1, "description": "Останов"},
+            {"value": 2, "description": "Работа на мин. частоте"},
+            {"value": 3, "description": "Работа на нулевой скорости"}
+          ]
+        }
+      ]
+    },
+    {
+      "groupCode": "C",
+      "groupName": "Настройка",
+      "parameters": [
+        {
+          "code": "C1-01",
+          "modbusAddress": "0200h",
+          "name": "Время разгона 1",
+          "description": "Время разгона 1",
+          "dataType": "float",
+          "range": "0.0–6000.0",
+          "unit": "с",
+          "defaultValue": "10.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "C1-02",
+          "modbusAddress": "0201h",
+          "name": "Время торможения 1",
+          "description": "Время торможения 1",
+          "dataType": "float",
+          "range": "0.0–6000.0",
+          "unit": "с",
+          "defaultValue": "10.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "C1-03",
+          "modbusAddress": "0202h",
+          "name": "Время разгона 2",
+          "description": "Время разгона 2",
+          "dataType": "float",
+          "range": "0.0–6000.0",
+          "unit": "с",
+          "defaultValue": "10.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "C1-04",
+          "modbusAddress": "0203h",
+          "name": "Время торможения 2",
+          "description": "Время торможения 2",
+          "dataType": "float",
+          "range": "0.0–6000.0",
+          "unit": "с",
+          "defaultValue": "10.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "C1-05",
+          "modbusAddress": "0204h",
+          "name": "Время разгона 3",
+          "description": "Время разгона 3",
+          "dataType": "float",
+          "range": "0.0–6000.0",
+          "unit": "с",
+          "defaultValue": "10.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "C1-06",
+          "modbusAddress": "0205h",
+          "name": "Время торможения 3",
+          "description": "Время торможения 3",
+          "dataType": "float",
+          "range": "0.0–6000.0",
+          "unit": "с",
+          "defaultValue": "10.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "C1-07",
+          "modbusAddress": "0206h",
+          "name": "Время разгона 4",
+          "description": "Время разгона 4",
+          "dataType": "float",
+          "range": "0.0–6000.0",
+          "unit": "с",
+          "defaultValue": "10.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "C1-08",
+          "modbusAddress": "0207h",
+          "name": "Время торможения 4",
+          "description": "Время торможения 4",
+          "dataType": "float",
+          "range": "0.0–6000.0",
+          "unit": "с",
+          "defaultValue": "10.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "C1-09",
+          "modbusAddress": "0208h",
+          "name": "Время аварийного останова",
+          "description": "Время аварийного останова",
+          "dataType": "float",
+          "range": "0.0–6000.0",
+          "unit": "с",
+          "defaultValue": "10.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "C1-10",
+          "modbusAddress": "0209h",
+          "name": "Единицы установки времени разгона / торможения",
+          "description": "Единицы установки времени разгона / торможения",
+          "dataType": "uint16",
+          "range": "0–6000",
+          "unit": "",
+          "defaultValue": "1",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "C1-11",
+          "modbusAddress": "020Ah",
+          "name": "Частота переключения времени разгона / торможения",
+          "description": "Частота переключения времени разгона / торможения",
+          "dataType": "float",
+          "range": "0.0–6000.0",
+          "unit": "с",
+          "defaultValue": "0.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "C2-01",
+          "modbusAddress": "020Bh",
+          "name": "Время S-кривой характеристики в начале разгона",
+          "description": "Время S-кривой характеристики в начале разгона",
+          "dataType": "float",
+          "range": "0.0–6000.0",
+          "unit": "с",
+          "defaultValue": "0.20",
+          "accessLevel": "Р"
+        },
+        {
+          "code": "C2-02",
+          "modbusAddress": "020Ch",
+          "name": "Время S-кривой характеристики в конце разгона",
+          "description": "Время S-кривой характеристики в конце разгона",
+          "dataType": "float",
+          "range": "0.0–6000.0",
+          "unit": "с",
+          "defaultValue": "0.20",
+          "accessLevel": "Р"
+        },
+        {
+          "code": "C2-03",
+          "modbusAddress": "020Dh",
+          "name": "Время S-кривой характеристики в начале торможения",
+          "description": "Время S-кривой характеристики в начале торможения",
+          "dataType": "float",
+          "range": "0.0–6000.0",
+          "unit": "с",
+          "defaultValue": "0.20",
+          "accessLevel": "Р"
+        },
+        {
+          "code": "C2-04",
+          "modbusAddress": "020Eh",
+          "name": "Время S-кривой характеристики в конце торможения",
+          "description": "Время S-кривой характеристики в конце торможения",
+          "dataType": "float",
+          "range": "0.0–6000.0",
+          "unit": "с",
+          "defaultValue": "0.00",
+          "accessLevel": "Р"
+        },
+        {
+          "code": "C3-01",
+          "modbusAddress": "020Fh",
+          "name": "Коэффициент компенсации скольжения",
+          "description": "Коэффициент компенсации скольжения",
+          "dataType": "float",
+          "range": "0.0–2.5",
+          "unit": "",
+          "defaultValue": "1.0",
+          "accessLevel": "О"
+        },
+        {
+          "code": "C3-02",
+          "modbusAddress": "0210h",
+          "name": "Начальная задержка компенсации скольжения",
+          "description": "Начальная задержка компенсации скольжения",
+          "dataType": "uint16",
+          "range": "0–10000",
+          "unit": "",
+          "defaultValue": "200",
+          "accessLevel": "О"
+        },
+        {
+          "code": "C3-03",
+          "modbusAddress": "0211h",
+          "name": "Ограничение компенсации скольжения",
+          "description": "Ограничение компенсации скольжения",
+          "dataType": "uint16",
+          "range": "0–250",
+          "unit": "",
+          "defaultValue": "200",
+          "accessLevel": "О"
+        },
+        {
+          "code": "C3-04",
+          "modbusAddress": "0212h",
+          "name": "Компенсация скольжения в генераторном режиме",
+          "description": "Компенсация скольжения в генераторном режиме",
+          "dataType": "enum",
+          "range": "0–1",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "О",
+          "options": [
+            {
+              "value": 0,
+              "description": "Отключено"
+            },
+            {
+              "value": 1,
+              "description": "Включено"
+            }
+          ]
+        },
+        {
+          "code": "C4-01",
+          "modbusAddress": "0213h",
+          "name": "Коэффициент компенсации момента",
+          "description": "Коэффициент компенсации момента",
+          "dataType": "float",
+          "range": "0.00–2.50",
+          "unit": "",
+          "defaultValue": "1.00",
+          "accessLevel": "О"
+        },
+        {
+          "code": "C4-02",
+          "modbusAddress": "0214h",
+          "name": "Постоянная времени компенсации момента",
+          "description": "Постоянная времени компенсации момента",
+          "dataType": "uint16",
+          "range": "0–10000",
+          "unit": "",
+          "defaultValue": "20",
+          "accessLevel": "О"
+        },
+        {
+          "code": "C5-01",
+          "modbusAddress": "0215h",
+          "name": "Пропорциональный коэффициент 1 регулятора скорости",
+          "description": "Пропорциональный коэффициент 1 регулятора скорости",
+          "dataType": "float",
+          "range": "0.00–300.00",
+          "unit": "",
+          "defaultValue": "20.00",
+          "accessLevel": "О"
+        },
+        {
+          "code": "C5-02",
+          "modbusAddress": "0216h",
+          "name": "Интегральная постоянная 1 регулятора скорости",
+          "description": "Интегральная постоянная 1 регулятора скорости",
+          "dataType": "float",
+          "range": "0.000–10.000",
+          "unit": "",
+          "defaultValue": "0.500",
+          "accessLevel": "О"
+        },
+        {
+          "code": "C5-03",
+          "modbusAddress": "0217h",
+          "name": "Пропорциональный коэффициент 2 регулятора скорости",
+          "description": "Пропорциональный коэффициент 2 регулятора скорости",
+          "dataType": "float",
+          "range": "0.00–300.00",
+          "unit": "",
+          "defaultValue": "20.00",
+          "accessLevel": "О"
+        },
+        {
+          "code": "C5-04",
+          "modbusAddress": "0218h",
+          "name": "Интегральная постоянная 2 регулятора скорости",
+          "description": "Интегральная постоянная 2 регулятора скорости",
+          "dataType": "float",
+          "range": "0.000–10.000",
+          "unit": "",
+          "defaultValue": "0.500",
+          "accessLevel": "О"
+        },
+        {
+          "code": "C5-05",
+          "modbusAddress": "0219h",
+          "name": "Ограничение регулятора скорости",
+          "description": "Ограничение регулятора скорости",
+          "dataType": "float",
+          "range": "0.0–20.0",
+          "unit": "",
+          "defaultValue": "5.0",
+          "accessLevel": "О"
+        },
+        {
+          "code": "C5-06",
+          "modbusAddress": "021Ah",
+          "name": "Начальная задержка регулятора скорости",
+          "description": "Начальная задержка регулятора скорости",
+          "dataType": "float",
+          "range": "0.000–0.500",
+          "unit": "",
+          "defaultValue": "0.004",
+          "accessLevel": "О"
+        },
+        {
+          "code": "C5-07",
+          "modbusAddress": "021Bh",
+          "name": "Частота включения регулятора скорости",
+          "description": "Частота включения регулятора скорости",
+          "dataType": "float",
+          "range": "0.0–400.0",
+          "unit": "Гц",
+          "defaultValue": "0.0",
+          "accessLevel": "О"
+        },
+        {
+          "code": "C6-01",
+          "modbusAddress": "021Ch",
+          "name": "Верхний предел несущей частоты",
+          "description": "Верхний предел несущей частоты",
+          "dataType": "float",
+          "range": "0.4–15.0",
+          "unit": "кГц",
+          "defaultValue": "15.0",
+          "accessLevel": "О"
+        },
+        {
+          "code": "C6-02",
+          "modbusAddress": "021Dh",
+          "name": "Нижний предел несущей частоты",
+          "description": "Нижний предел несущей частоты",
+          "dataType": "float",
+          "range": "0.4–15.0",
+          "unit": "кГц",
+          "defaultValue": "15.0",
+          "accessLevel": "О"
+        },
+        {
+          "code": "C6-03",
+          "modbusAddress": "021Eh",
+          "name": "Пропорциональный коэффициент несущей частоты",
+          "description": "Пропорциональный коэффициент несущей частоты",
+          "dataType": "uint16",
+          "range": "00–99",
+          "unit": "",
+          "defaultValue": "00",
+          "accessLevel": "О"
+        },
+        {
+          "code": "C7-01",
+          "modbusAddress": "021Fh",
+          "name": "Предотвращение вибраций",
+          "description": "Предотвращение вибраций",
+          "dataType": "enum",
+          "range": "0–1",
+          "unit": "",
+          "defaultValue": "1",
+          "accessLevel": "Р",
+          "options": [
+            {
+              "value": 0,
+              "description": "Невозможно"
+            },
+            {
+              "value": 1,
+              "description": "Возможно"
+            }
+          ]
+        },
+        {
+          "code": "C7-02",
+          "modbusAddress": "0220h",
+          "name": "Коэффициент предотвращения вибраций",
+          "description": "Коэффициент предотвращения вибраций",
+          "dataType": "float",
+          "range": "0.00–2.50",
+          "unit": "",
+          "defaultValue": "1.00",
+          "accessLevel": "Р"
+        },
+        {
+          "code": "C8-08",
+          "modbusAddress": "022Ah",
+          "name": "Коэффициент регулятора",
+          "description": "Коэффициент регулятора",
+          "dataType": "float",
+          "range": "0.00–10.00",
+          "unit": "",
+          "defaultValue": "1.00",
+          "accessLevel": "Р"
+        },
+        {
+          "code": "C8-09",
+          "modbusAddress": "022Bh",
+          "name": "Постоянная времени регулятора",
+          "description": "Постоянная времени регулятора",
+          "dataType": "uint16",
+          "range": "0–1000",
+          "unit": "мс",
+          "defaultValue": "50",
+          "accessLevel": "Р"
+        },
+        {
+          "code": "C8-30",
+          "modbusAddress": "0240h",
+          "name": "Настройка несущей частоты",
+          "description": "Настройка несущей частоты",
+          "dataType": "enum",
+          "range": "0–2",
+          "unit": "",
+          "defaultValue": "2",
+          "accessLevel": "Р",
+          "options": [
+            {
+              "value": 0,
+              "description": "2 кГц"
+            },
+            {
+              "value": 1,
+              "description": "С6-01"
+            },
+            {
+              "value": 2,
+              "description": "5 кГц"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "groupCode": "D",
+      "groupName": "Задание",
+      "parameters": [
+        {
+          "code": "D1-01",
+          "modbusAddress": "0280h",
+          "name": "Опорная частота 1",
+          "description": "Значение опорной частоты 1",
+          "dataType": "float",
+          "range": "0.0–400.0",
+          "unit": "Гц",
+          "defaultValue": "0.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "D1-02",
+          "modbusAddress": "0281h",
+          "name": "Опорная частота 2",
+          "description": "Значение опорной частоты 2",
+          "dataType": "float",
+          "range": "0.0–400.0",
+          "unit": "Гц",
+          "defaultValue": "0.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "D1-03",
+          "modbusAddress": "0282h",
+          "name": "Опорная частота 3",
+          "description": "Значение опорной частоты 3",
+          "dataType": "float",
+          "range": "0.0–400.0",
+          "unit": "Гц",
+          "defaultValue": "0.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "D1-04",
+          "modbusAddress": "0283h",
+          "name": "Опорная частота 4",
+          "description": "Значение опорной частоты 4",
+          "dataType": "float",
+          "range": "0.0–400.0",
+          "unit": "Гц",
+          "defaultValue": "0.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "D1-05",
+          "modbusAddress": "0284h",
+          "name": "Опорная частота 5",
+          "description": "Значение опорной частоты 5",
+          "dataType": "float",
+          "range": "0.0–400.0",
+          "unit": "Гц",
+          "defaultValue": "0.0",
+          "accessLevel": "О"
+        },
+        {
+          "code": "D1-06",
+          "modbusAddress": "0285h",
+          "name": "Опорная частота 6",
+          "description": "Значение опорной частоты 6",
+          "dataType": "float",
+          "range": "0.0–400.0",
+          "unit": "Гц",
+          "defaultValue": "0.0",
+          "accessLevel": "О"
+        },
+        {
+          "code": "D1-07",
+          "modbusAddress": "0286h",
+          "name": "Опорная частота 7",
+          "description": "Значение опорной частоты 7",
+          "dataType": "float",
+          "range": "0.0–400.0",
+          "unit": "Гц",
+          "defaultValue": "0.0",
+          "accessLevel": "О"
+        },
+        {
+          "code": "D1-08",
+          "modbusAddress": "0287h",
+          "name": "Опорная частота 8",
+          "description": "Значение опорной частоты 8",
+          "dataType": "float",
+          "range": "0.0–400.0",
+          "unit": "Гц",
+          "defaultValue": "0.0",
+          "accessLevel": "О"
+        },
+        {
+          "code": "D1-09",
+          "modbusAddress": "0288h",
+          "name": "Опорная частота медленного (шагового) вращения",
+          "description": "Опорная частота для медленного (шагового) вращения",
+          "dataType": "float",
+          "range": "0.0–400.0",
+          "unit": "Гц",
+          "defaultValue": "6.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "D2-01",
+          "modbusAddress": "0289h",
+          "name": "Верхний предел частоты",
+          "description": "Верхний предел опорной частоты",
+          "dataType": "float",
+          "range": "0.0–110.0",
+          "unit": "%",
+          "defaultValue": "100.0",
+          "accessLevel": "О"
+        },
+        {
+          "code": "D2-02",
+          "modbusAddress": "028Ah",
+          "name": "Нижний предел частоты",
+          "description": "Нижний предел опорной частоты",
+          "dataType": "float",
+          "range": "0.0–100.0",
+          "unit": "%",
+          "defaultValue": "0.0",
+          "accessLevel": "О"
+        },
+        {
+          "code": "D3-01",
+          "modbusAddress": "028Bh",
+          "name": "Частота перескока 1",
+          "description": "Установка частоты перескока 1",
+          "dataType": "float",
+          "range": "0.0–400.0",
+          "unit": "Гц",
+          "defaultValue": "0.0",
+          "accessLevel": "О"
+        },
+        {
+          "code": "D3-02",
+          "modbusAddress": "028Ch",
+          "name": "Частота перескока 2",
+          "description": "Установка частоты перескока 2",
+          "dataType": "float",
+          "range": "0.0–400.0",
+          "unit": "Гц",
+          "defaultValue": "0.0",
+          "accessLevel": "О"
+        },
+        {
+          "code": "D3-03",
+          "modbusAddress": "028Dh",
+          "name": "Частота перескока 3",
+          "description": "Установка частоты перескока 3",
+          "dataType": "float",
+          "range": "0.0–400.0",
+          "unit": "Гц",
+          "defaultValue": "0.0",
+          "accessLevel": "О"
+        },
+        {
+          "code": "D3-04",
+          "modbusAddress": "028Eh",
+          "name": "Ширина диапазона перескока",
+          "description": "Ширина диапазона частот перескока",
+          "dataType": "float",
+          "range": "0.0–20.0",
+          "unit": "Гц",
+          "defaultValue": "1.0",
+          "accessLevel": "О"
+        },
+        {
+          "code": "D4-01",
+          "modbusAddress": "028Fh",
+          "name": "Захват частоты",
+          "description": "Сохранение задания частоты при управлении «больше/меньше»",
+          "dataType": "enum",
+          "range": "0–1",
+          "defaultValue": "0",
+          "accessLevel": "Р",
+          "options": [
+            {
+              "value": 0,
+              "description": "Невозможно"
+            },
+            {
+              "value": 1,
+              "description": "Возможно"
+            }
+          ]
+        },
+        {
+          "code": "D4-02",
+          "modbusAddress": "0290h",
+          "name": "Значение изменения задания частоты",
+          "description": "Значение изменения задания частоты при аналоговом задании",
+          "dataType": "uint16",
+          "range": "0–100",
+          "unit": "%",
+          "defaultValue": "10",
+          "accessLevel": "Р"
+        },
+        {
+          "code": "D5-01",
+          "modbusAddress": "0291h",
+          "name": "Выбор управления скоростью/моментом",
+          "description": "Выбор между управлением скоростью и моментом",
+          "dataType": "enum",
+          "range": "0–1",
+          "defaultValue": "0",
+          "accessLevel": "Р",
+          "options": [
+            {
+              "value": 0,
+              "description": "Управление скоростью"
+            },
+            {
+              "value": 1,
+              "description": "Управление моментом"
+            }
+          ]
+        },
+        {
+          "code": "D5-02",
+          "modbusAddress": "0292h",
+          "name": "Задержка задания тока",
+          "description": "Задержка задания тока",
+          "dataType": "uint16",
+          "range": "0–1000",
+          "unit": "мс",
+          "defaultValue": "0",
+          "accessLevel": "Р"
+        },
+        {
+          "code": "D5-03",
+          "modbusAddress": "0293h",
+          "name": "Выбор способа ограничения скорости",
+          "description": "Выбор способа ограничения скорости",
+          "dataType": "enum",
+          "range": "1–2",
+          "defaultValue": "1",
+          "accessLevel": "Р",
+          "options": [
+            {
+              "value": 1,
+              "description": "По аналоговому входу (клеммы 13, 14)"
+            },
+            {
+              "value": 2,
+              "description": "Программной уставкой"
+            }
+          ]
+        },
+        {
+          "code": "D5-04",
+          "modbusAddress": "0294h",
+          "name": "Уровень ограничения скорости",
+          "description": "Уровень ограничения скорости",
+          "dataType": "int16",
+          "range": "-120–+120",
+          "unit": "%",
+          "defaultValue": "0",
+          "accessLevel": "Р"
+        },
+        {
+          "code": "D5-05",
+          "modbusAddress": "0295h",
+          "name": "Смещение ограничения скорости",
+          "description": "Смещение ограничения скорости",
+          "dataType": "uint16",
+          "range": "0–120",
+          "unit": "%",
+          "defaultValue": "10",
+          "accessLevel": "Р"
+        },
+        {
+          "code": "D5-06",
+          "modbusAddress": "0296h",
+          "name": "Время переключения управления скоростью/моментом",
+          "description": "Время переключения между управлением скоростью и моментом",
+          "dataType": "uint16",
+          "range": "0–1000",
+          "unit": "мс",
+          "defaultValue": "0",
+          "accessLevel": "Р"
+        }
+      ]
+    },
+    {
+      "groupCode": "E",
+      "groupName": "Настройки двигателя",
+      "parameters": [
+        {
+          "code": "E1-01",
+          "modbusAddress": "0300h",
+          "name": "Установка входного напряжения",
+          "description": "Установка входного напряжения преобразователя",
+          "dataType": "uint16",
+          "range": "150~510 или 511~841",
+          "unit": "В",
+          "defaultValue": "380 или 660",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "E1-02",
+          "modbusAddress": "0301h",
+          "name": "Тип охлаждения двигателя",
+          "description": "Выбор типа охлаждения двигателя",
+          "dataType": "enum",
+          "range": "0-1",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "Б",
+          "options": [
+            {"value": 0, "description": "Стандартный двигатель"},
+            {"value": 1, "description": "Двигатель с независимым обдувом"}
+          ]
+        },
+        {
+          "code": "E1-03",
+          "modbusAddress": "0302h",
+          "name": "Характеристика U/f",
+          "description": "Выбор предустановленной или пользовательской характеристики U/f",
+          "dataType": "enum",
+          "range": "0-F",
+          "unit": "",
+          "defaultValue": "0F",
+          "accessLevel": "Б",
+          "options": [
+            {"value": "0", "description": "Заранее заданная характеристика 0"},
+            {"value": "F", "description": "Характеристика пользователя"}
+          ]
+        },
+        {
+          "code": "E1-04",
+          "modbusAddress": "0303h",
+          "name": "Максимальная выходная частота",
+          "description": "Максимальная выходная частота преобразователя",
+          "dataType": "float",
+          "range": "50.0~400.0",
+          "unit": "Гц",
+          "defaultValue": "50.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "E1-05",
+          "modbusAddress": "0304h",
+          "name": "Максимальное напряжение",
+          "description": "Максимальное выходное напряжение преобразователя",
+          "dataType": "float",
+          "range": "0.0~510.0",
+          "unit": "В",
+          "defaultValue": "380.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "E1-06",
+          "modbusAddress": "0305h",
+          "name": "Базовая частота",
+          "description": "Частота при максимальном напряжении (базовая частота)",
+          "dataType": "float",
+          "range": "0.0~400.0",
+          "unit": "Гц",
+          "defaultValue": "50.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "E1-07",
+          "modbusAddress": "0306h",
+          "name": "Средняя выходная частота",
+          "description": "Средняя выходная частота точки излома характеристики U/f",
+          "dataType": "float",
+          "range": "0.0~400.0",
+          "unit": "Гц",
+          "defaultValue": "3.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "E1-08",
+          "modbusAddress": "0307h",
+          "name": "Среднее выходное напряжение",
+          "description": "Напряжение при средней выходной частоте",
+          "dataType": "float",
+          "range": "0.0~510.0",
+          "unit": "В",
+          "defaultValue": "20.0",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "E1-09",
+          "modbusAddress": "0308h",
+          "name": "Минимальная выходная частота",
+          "description": "Минимальная выходная частота преобразователя",
+          "dataType": "float",
+          "range": "0.0~400.0",
+          "unit": "Гц",
+          "defaultValue": "0.5",
+          "accessLevel": "Б"
+        },
+        {
+          "code": "E1-10",
+          "modbusAddress": "0309h",
+          "name": "Минимальное напряжение",
+          "description": "Напряжение при минимальной выходной частоте",
+          "dataType": "float",
+          "range": "0.0~510.0",
+          "unit": "В",
+          "defaultValue": "3.4",
+          "accessLevel": "Б"
+        }
+      ]
+    },
+    {
+      "groupCode": "F",
+      "groupName": "Дополнения",
+      "parameters": [
+        {
+          "code": "F1-01",
+          "modbusAddress": "0380h",
+          "name": "Постоянная ИД",
+          "description": "Постоянная ИД",
+          "dataType": "uint16",
+          "range": "0-80000",
+          "unit": "",
+          "defaultValue": "600",
+          "accessLevel": "Б,О,Р"
+        },
+        {
+          "code": "F1-02",
+          "modbusAddress": "0381h",
+          "name": "Работа при обрыве связи",
+          "description": "Работа при обрыве связи",
+          "dataType": "enum",
+          "range": "0-3",
+          "unit": "",
+          "defaultValue": "1",
+          "accessLevel": "Б,О,Р",
+          "options": [
+            {
+              "value": 0,
+              "description": "Останов выбегом"
+            },
+            {
+              "value": 1,
+              "description": "Плавный останов"
+            },
+            {
+              "value": 2,
+              "description": "Быстрый останов"
+            },
+            {
+              "value": 3,
+              "description": "Только сигнал"
+            }
+          ]
+        },
+        {
+          "code": "F1-03",
+          "modbusAddress": "0382h",
+          "name": "Работа при превышении скорости",
+          "description": "Работа при превышении скорости",
+          "dataType": "enum",
+          "range": "0-3",
+          "unit": "",
+          "defaultValue": "1",
+          "accessLevel": "Б,О,Р",
+          "options": [
+            {
+              "value": 0,
+              "description": "Останов выбегом"
+            },
+            {
+              "value": 1,
+              "description": "Плавный останов"
+            },
+            {
+              "value": 2,
+              "description": "Быстрый останов"
+            },
+            {
+              "value": 3,
+              "description": "Только сигнал"
+            }
+          ]
+        },
+        {
+          "code": "F1-04",
+          "modbusAddress": "0383h",
+          "name": "Работа при отклонении скорости",
+          "description": "Работа при отклонении скорости",
+          "dataType": "enum",
+          "range": "0-3",
+          "unit": "",
+          "defaultValue": "3",
+          "accessLevel": "Б,О,Р",
+          "options": [
+            {
+              "value": 0,
+              "description": "Останов выбегом"
+            },
+            {
+              "value": 1,
+              "description": "Плавный останов"
+            },
+            {
+              "value": 2,
+              "description": "Быстрый останов"
+            },
+            {
+              "value": 3,
+              "description": "Только сигнал"
+            }
+          ]
+        },
+        {
+          "code": "F1-05",
+          "modbusAddress": "0384h",
+          "name": "Направление вращения ИД",
+          "description": "Направление вращения ИД",
+          "dataType": "enum",
+          "range": "0-1",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "Б,О,Р",
+          "options": [
+            {
+              "value": 0,
+              "description": "Прямое"
+            },
+            {
+              "value": 1,
+              "description": "Обратное"
+            }
+          ]
+        },
+        {
+          "code": "F1-06",
+          "modbusAddress": "0385h",
+          "name": "Коэф. деления ИД",
+          "description": "Коэффициент деления ИД",
+          "dataType": "uint16",
+          "range": "1-132",
+          "unit": "",
+          "defaultValue": "1",
+          "accessLevel": "Б,О,Р"
+        },
+        {
+          "code": "F1-07",
+          "modbusAddress": "0386h",
+          "name": "Интегрирование при разгоне/торможении",
+          "description": "Интегрирование при разгоне/торможении",
+          "dataType": "enum",
+          "range": "0-1",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "Б,О,Р",
+          "options": [
+            {
+              "value": 0,
+              "description": "Отключено"
+            },
+            {
+              "value": 1,
+              "description": "Включено"
+            }
+          ]
+        },
+        {
+          "code": "F1-08",
+          "modbusAddress": "0387h",
+          "name": "Уровень определения превышения скорости",
+          "description": "Уровень определения превышения скорости",
+          "dataType": "uint16",
+          "range": "0-120",
+          "unit": "%",
+          "defaultValue": "115",
+          "accessLevel": "Б,О,Р"
+        },
+        {
+          "code": "F1-09",
+          "modbusAddress": "0388h",
+          "name": "Задержка определения превышения скорости",
+          "description": "Задержка определения превышения скорости",
+          "dataType": "float",
+          "range": "0.0-2.0",
+          "unit": "с",
+          "defaultValue": "0.0",
+          "accessLevel": "Б,О,Р"
+        },
+        {
+          "code": "F1-10",
+          "modbusAddress": "0389h",
+          "name": "Уровень определения чрезмерной вибрации",
+          "description": "Уровень определения чрезмерной вибрации",
+          "dataType": "uint16",
+          "range": "0-50",
+          "unit": "",
+          "defaultValue": "10",
+          "accessLevel": "Б,О,Р"
+        },
+        {
+          "code": "F1-11",
+          "modbusAddress": "038Ah",
+          "name": "Задержка определения чрезмерной вибрации",
+          "description": "Задержка определения чрезмерной вибрации",
+          "dataType": "float",
+          "range": "0.0-10.0",
+          "unit": "с",
+          "defaultValue": "0.5",
+          "accessLevel": "Б,О,Р"
+        },
+        {
+          "code": "F1-12",
+          "modbusAddress": "038Bh",
+          "name": "Количество зубцов 1-го уровня ИД",
+          "description": "Количество зубцов 1-го уровня ИД",
+          "dataType": "uint16",
+          "range": "0-1000",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "Б,О,Р"
+        },
+        {
+          "code": "F1-13",
+          "modbusAddress": "038Ch",
+          "name": "Количество зубцов 2-го уровня ИД",
+          "description": "Количество зубцов 2-го уровня ИД",
+          "dataType": "uint16",
+          "range": "0-1000",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "Б,О,Р"
+        }
+      ]
+    },
+    {
+      "groupCode": "H",
+      "groupName": "Клеммы управления",
+      "parameters": [
+        {
+          "code": "H1-01",
+          "modbusAddress": "0400h",
+          "name": "Многофункц. вход (клемма 3)",
+          "description": "Многофункциональный вход (клемма 3)",
+          "dataType": "uint16",
+          "range": "0-255",
+          "unit": "",
+          "defaultValue": "24",
+          "accessLevel": "О",
+          "options": []
+        },
+        {
+          "code": "H1-02",
+          "modbusAddress": "0401h",
+          "name": "Многофункц. вход (клемма 4)",
+          "description": "Многофункциональный вход (клемма 4)",
+          "dataType": "uint16",
+          "range": "0-255",
+          "unit": "",
+          "defaultValue": "14",
+          "accessLevel": "О",
+          "options": []
+        },
+        {
+          "code": "H1-03",
+          "modbusAddress": "0402h",
+          "name": "Многофункц. вход (клемма 5)",
+          "description": "Многофункциональный вход (клемма 5)",
+          "dataType": "uint16",
+          "range": "0-255",
+          "unit": "",
+          "defaultValue": "3",
+          "accessLevel": "О",
+          "options": []
+        },
+        {
+          "code": "H1-04",
+          "modbusAddress": "0403h",
+          "name": "Многофункц. вход (клемма 6)",
+          "description": "Многофункциональный вход (клемма 6)",
+          "dataType": "uint16",
+          "range": "0-255",
+          "unit": "",
+          "defaultValue": "4",
+          "accessLevel": "О",
+          "options": []
+        },
+        {
+          "code": "H1-05",
+          "modbusAddress": "0404h",
+          "name": "Многофункц. вход (клемма 7)",
+          "description": "Многофункциональный вход (клемма 7)",
+          "dataType": "uint16",
+          "range": "0-255",
+          "unit": "",
+          "defaultValue": "6",
+          "accessLevel": "О",
+          "options": []
+        },
+        {
+          "code": "H1-06",
+          "modbusAddress": "0405h",
+          "name": "Многофункц. вход (клемма 8)",
+          "description": "Многофункциональный вход (клемма 8)",
+          "dataType": "uint16",
+          "range": "0-255",
+          "unit": "",
+          "defaultValue": "8",
+          "accessLevel": "О",
+          "options": []
+        },
+        {
+          "code": "H2-01",
+          "modbusAddress": "0406h",
+          "name": "Многофункц. выход (клеммы 9-10)",
+          "description": "Многофункциональный выход (клеммы 9-10)",
+          "dataType": "uint16",
+          "range": "0-255",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "О",
+          "options": []
+        },
+        {
+          "code": "H2-02",
+          "modbusAddress": "0407h",
+          "name": "Многофункц. выход (клеммы 25-27)",
+          "description": "Многофункциональный выход (клеммы 25-27)",
+          "dataType": "uint16",
+          "range": "0-255",
+          "unit": "",
+          "defaultValue": "1",
+          "accessLevel": "О",
+          "options": []
+        },
+        {
+          "code": "H2-03",
+          "modbusAddress": "0408h",
+          "name": "Многофункц. выход (клеммы 26-27)",
+          "description": "Многофункциональный выход (клеммы 26-27)",
+          "dataType": "uint16",
+          "range": "0-255",
+          "unit": "",
+          "defaultValue": "2",
+          "accessLevel": "О",
+          "options": []
+        },
+        {
+          "code": "H3-01",
+          "modbusAddress": "0409h",
+          "name": "Выбор уровня сигнала клеммы 13",
+          "description": "Выбор уровня сигнала клеммы 13",
+          "dataType": "enum",
+          "range": "0-1",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "О",
+          "options": [
+            {
+              "value": 0,
+              "description": "0-10 В пост. тока"
+            },
+            {
+              "value": 1,
+              "description": "-10...+10 В пост. тока"
+            }
+          ]
+        },
+        {
+          "code": "H3-02",
+          "modbusAddress": "040Ah",
+          "name": "Коэффициент клеммы 13",
+          "description": "Коэффициент клеммы 13",
+          "dataType": "float",
+          "range": "0.0-1000.0",
+          "unit": "%",
+          "defaultValue": "100.0",
+          "accessLevel": "О",
+          "options": []
+        },
+        {
+          "code": "H3-03",
+          "modbusAddress": "040Bh",
+          "name": "Смещение клеммы 13",
+          "description": "Смещение клеммы 13",
+          "dataType": "float",
+          "range": "-100.0-100.0",
+          "unit": "%",
+          "defaultValue": "0.0",
+          "accessLevel": "О",
+          "options": []
+        },
+        {
+          "code": "H3-04",
+          "modbusAddress": "040Ch",
+          "name": "Выбор уровня сигнала клеммы 16",
+          "description": "Выбор уровня сигнала клеммы 16",
+          "dataType": "enum",
+          "range": "0-1",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "О",
+          "options": [
+            {
+              "value": 0,
+              "description": "0-10 В пост. тока"
+            },
+            {
+              "value": 1,
+              "description": "-10...+10 В пост. тока"
+            }
+          ]
+        },
+        {
+          "code": "H3-05",
+          "modbusAddress": "040Dh",
+          "name": "Выбор функции аналогового входа клеммы 16",
+          "description": "Выбор функции аналогового входа клеммы 16",
+          "dataType": "uint16",
+          "range": "0-31",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "О",
+          "options": []
+        },
+        {
+          "code": "H3-06",
+          "modbusAddress": "040Eh",
+          "name": "Коэффициент клеммы 16",
+          "description": "Коэффициент клеммы 16",
+          "dataType": "float",
+          "range": "0.0-1000.0",
+          "unit": "%",
+          "defaultValue": "100.0",
+          "accessLevel": "О",
+          "options": []
+        },
+        {
+          "code": "H3-07",
+          "modbusAddress": "040Fh",
+          "name": "Смещение клеммы 16",
+          "description": "Смещение клеммы 16",
+          "dataType": "float",
+          "range": "-100.0-100.0",
+          "unit": "%",
+          "defaultValue": "0.0",
+          "accessLevel": "О",
+          "options": []
+        },
+        {
+          "code": "H3-08",
+          "modbusAddress": "0410h",
+          "name": "Выбор уровня сигнала клеммы 14",
+          "description": "Выбор уровня сигнала клеммы 14 (уровень клеммы 14)",
+          "dataType": "enum",
+          "range": "0-2",
+          "unit": "",
+          "defaultValue": "2",
+          "accessLevel": "Р",
+          "options": [
+            {
+              "value": 0,
+              "description": "0-10 В пост. тока"
+            },
+            {
+              "value": 1,
+              "description": "-10...+10 В пост. тока"
+            },
+            {
+              "value": 2,
+              "description": "4-20 мА"
+            }
+          ]
+        },
+        {
+          "code": "H3-09",
+          "modbusAddress": "0411h",
+          "name": "Многофункциональный аналоговый вход (клемма 14)",
+          "description": "Многофункциональный аналоговый вход (клемма 14)",
+          "dataType": "uint16",
+          "range": "0-31",
+          "unit": "",
+          "defaultValue": "31",
+          "accessLevel": "Р",
+          "options": []
+        },
+        {
+          "code": "H3-10",
+          "modbusAddress": "0412h",
+          "name": "Коэффициент усиления клеммы 14",
+          "description": "Коэффициент усиления клеммы 14 (клемма 14)",
+          "dataType": "float",
+          "range": "0.0-100.0",
+          "unit": "%",
+          "defaultValue": "100.0",
+          "accessLevel": "Р",
+          "options": []
+        },
+        {
+          "code": "H3-11",
+          "modbusAddress": "0413h",
+          "name": "Смещение клеммы 14",
+          "description": "Смещение клеммы 14 (смещение клеммы 14)",
+          "dataType": "float",
+          "range": "-100.0-100.0",
+          "unit": "%",
+          "defaultValue": "0.0",
+          "accessLevel": "Р",
+          "options": []
+        },
+        {
+          "code": "H3-12",
+          "modbusAddress": "0414h",
+          "name": "Постоянная времени фильтра аналогового входа",
+          "description": "Постоянная времени фильтра аналогового входа",
+          "dataType": "float",
+          "range": "0.00-2.00",
+          "unit": "с",
+          "defaultValue": "0.00",
+          "accessLevel": "Р",
+          "options": []
+        }
+      ]
+    },
+    {
+      "groupCode": "L",
+      "groupName": "Защита",
+      "parameters": [
+        {
+          "code": "L1-01",
+          "modbusAddress": "0480h",
+          "name": "Выбор защиты электродвигателя",
+          "description": "Выбор защиты двигателя от перегрузки",
+          "dataType": "enum",
+          "range": "0, 1",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "О",
+          "options": [
+            {
+              "value": 0,
+              "description": "Невозможна"
+            },
+            {
+              "value": 1,
+              "description": "Возможна"
+            }
+          ]
+        },
+        {
+          "code": "L1-02",
+          "modbusAddress": "0481h",
+          "name": "Постоянная времени защиты электродвигателя",
+          "description": "Постоянная времени защиты двигателя от перегрузки",
+          "dataType": "float",
+          "range": "0,1~5,0",
+          "unit": "мин",
+          "defaultValue": "1",
+          "accessLevel": "О"
+        },
+        {
+          "code": "L2-01",
+          "modbusAddress": "0482h",
+          "name": "Определение кратковременного прекращения подачи питания",
+          "description": "Защита от потери питания",
+          "dataType": "enum",
+          "range": "0~2",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "О",
+          "options": [
+            {
+              "value": 0,
+              "description": "Невозможно"
+            },
+            {
+              "value": 1,
+              "description": "Возможно"
+            },
+            {
+              "value": 2,
+              "description": "Интеллектуальное"
+            }
+          ]
+        },
+        {
+          "code": "L2-02",
+          "modbusAddress": "0483h",
+          "name": "Время игнорирования потери подачи питания",
+          "description": "Время игнорирования потери питания",
+          "dataType": "float",
+          "range": "0.0~2.0",
+          "unit": "с",
+          "defaultValue": "**",
+          "accessLevel": "О"
+        },
+        {
+          "code": "L2-03",
+          "modbusAddress": "0484h",
+          "name": "Минимальное системное время",
+          "description": "Минимальное системное время",
+          "dataType": "float",
+          "range": "0.0~5.0",
+          "unit": "с",
+          "defaultValue": "**",
+          "accessLevel": "О"
+        },
+        {
+          "code": "L2-04",
+          "modbusAddress": "0485h",
+          "name": "Время поддержания напряжения",
+          "description": "Время поддержания напряжения",
+          "dataType": "float",
+          "range": "0.0~2.0",
+          "unit": "с",
+          "defaultValue": "0.3",
+          "accessLevel": "P"
+        },
+        {
+          "code": "L2-05",
+          "modbusAddress": "0486h",
+          "name": "Уровень определения пониженного входного напряжения",
+          "description": "Уровень определения пониженного входного напряжения",
+          "dataType": "uint16",
+          "range": "300~420",
+          "unit": "В",
+          "defaultValue": "380",
+          "accessLevel": "P"
+        },
+        {
+          "code": "L2-06",
+          "modbusAddress": "0487h",
+          "name": "Уровень торможения КЕВ",
+          "description": "Частота инерционного торможения",
+          "dataType": "float",
+          "range": "0.0~100.0",
+          "unit": "%",
+          "defaultValue": "0.0",
+          "accessLevel": "P"
+        },
+        {
+          "code": "L3-01",
+          "modbusAddress": "0488h",
+          "name": "Выбор предотвращения срыва во время ускорения",
+          "description": "Выбор предотвращения срыва при ускорении (разгоне)",
+          "dataType": "enum",
+          "range": "0~2",
+          "unit": "",
+          "defaultValue": "1",
+          "accessLevel": "О",
+          "options": [
+            {
+              "value": 0,
+              "description": "Невозможно"
+            },
+            {
+              "value": 1,
+              "description": "Основная уставка"
+            },
+            {
+              "value": 2,
+              "description": "Усовершенствованное"
+            }
+          ]
+        },
+        {
+          "code": "L3-02",
+          "modbusAddress": "0489h",
+          "name": "Уровень предотвращения срыва во время ускорения",
+          "description": "Уровень предотвращения срыва при ускорении (разгоне)",
+          "dataType": "uint16",
+          "range": "0~200",
+          "unit": "%",
+          "defaultValue": "170",
+          "accessLevel": "О"
+        },
+        {
+          "code": "L3-03",
+          "modbusAddress": "048Ah",
+          "name": "Ограничение предотвращения срыва при ускорении",
+          "description": "Ограничение предотвращения срыва при ускорении (разгоне)",
+          "dataType": "uint16",
+          "range": "0~100",
+          "unit": "%",
+          "defaultValue": "100",
+          "accessLevel": "P"
+        },
+        {
+          "code": "L3-04",
+          "modbusAddress": "048Bh",
+          "name": "Выбор предотвращения срыва во время торможения",
+          "description": "Выбор предотвращения срыва во время торможения",
+          "dataType": "enum",
+          "range": "0~2",
+          "unit": "",
+          "defaultValue": "1",
+          "accessLevel": "О",
+          "options": [
+            {
+              "value": 0,
+              "description": "Невозможно"
+            },
+            {
+              "value": 1,
+              "description": "Основная уставка"
+            },
+            {
+              "value": 2,
+              "description": "Усовершенствованное"
+            }
+          ]
+        },
+        {
+          "code": "L3-05",
+          "modbusAddress": "048Ch",
+          "name": "Выбор предотвращения срыва во время вращения",
+          "description": "Выбор предотвращения срыва во время вращения (работы)",
+          "dataType": "enum",
+          "range": "0~2",
+          "unit": "",
+          "defaultValue": "1",
+          "accessLevel": "О",
+          "options": [
+            {
+              "value": 0,
+              "description": "Невозможно"
+            },
+            {
+              "value": 1,
+              "description": "Время торможения 1"
+            },
+            {
+              "value": 2,
+              "description": "Время торможения 2"
+            }
+          ]
+        },
+        {
+          "code": "L3-06",
+          "modbusAddress": "048Dh",
+          "name": "Уровень предотвращения срыва во время вращения",
+          "description": "Уровень предотвращения срыва во время вращения (работы)",
+          "dataType": "uint16",
+          "range": "0~200",
+          "unit": "%",
+          "defaultValue": "160.0",
+          "accessLevel": "О"
+        }
+      ]
+    },
+    {
+      "groupCode": "O",
+      "groupName": "Пульт управления",
+      "parameters": [
+        {
+          "code": "O1-01",
+          "modbusAddress": "0500h",
+          "name": "Выбор 4-го индицируемого параметра во время вращения двигателя",
+          "description": "Определяет четвертый параметр, отображаемый на дисплее во время работы двигателя",
+          "dataType": "uint16",
+          "range": "4~35",
+          "unit": "",
+          "defaultValue": "8",
+          "accessLevel": "O"
+        },
+        {
+          "code": "O1-02",
+          "modbusAddress": "0501h",
+          "name": "Выбор индицируемого параметра после включения питания",
+          "description": "Определяет параметр, отображаемый на дисплее после включения питания",
+          "dataType": "enum",
+          "range": "1~4",
+          "unit": "",
+          "defaultValue": "1",
+          "accessLevel": "O",
+          "options": [
+            {"value": 1, "description": "Опорная частота"},
+            {"value": 2, "description": "Выходная частота"},
+            {"value": 3, "description": "Выходной ток"},
+            {"value": 4, "description": "Параметр O1-01"}
+          ]
+        },
+        {
+          "code": "O1-03",
+          "modbusAddress": "0502h",
+          "name": "Единицы скорости для задания и индикации",
+          "description": "Определяет единицы измерения скорости для задания и отображения",
+          "dataType": "uint16",
+          "range": "0~39999",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "O"
+        },
+        {
+          "code": "O1-04",
+          "modbusAddress": "0503h",
+          "name": "Единицы частоты при установке констант E1-04, -06, -07, -09",
+          "description": "Определяет единицы измерения частоты для указанных констант",
+          "dataType": "enum",
+          "range": "0~1",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "O",
+          "options": [
+            {"value": 0, "description": "Гц"},
+            {"value": 1, "description": "об/мин"}
+          ]
+        },
+        {
+          "code": "O1-05",
+          "modbusAddress": "0504h",
+          "name": "Выбор индикации номера константы",
+          "description": "Определяет формат отображения номеров констант",
+          "dataType": "enum",
+          "range": "0~1",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "P",
+          "options": [
+            {"value": 0, "description": "Обычный номер"},
+            {"value": 1, "description": "По адресу MODBUS"}
+          ]
+        },
+        {
+          "code": "O2-01",
+          "modbusAddress": "0505h",
+          "name": "Использование клавиши МЕСТН/ДИСТАНЦ",
+          "description": "Разрешает или запрещает использование клавиши местного/дистанционного управления",
+          "dataType": "enum",
+          "range": "0~1",
+          "unit": "",
+          "defaultValue": "1",
+          "accessLevel": "O",
+          "options": [
+            {"value": 0, "description": "запрещено"},
+            {"value": 1, "description": "разрешено"}
+          ]
+        },
+        {
+          "code": "O2-02",
+          "modbusAddress": "0506h",
+          "name": "Клавиша СТОП при внешнем управлении",
+          "description": "Определяет действие клавиши СТОП при внешнем управлении",
+          "dataType": "enum",
+          "range": "0~1",
+          "unit": "",
+          "defaultValue": "1",
+          "accessLevel": "O",
+          "options": [
+            {"value": 0, "description": "не действует"},
+            {"value": 1, "description": "действует"}
+          ]
+        },
+        {
+          "code": "O2-03",
+          "modbusAddress": "0507h",
+          "name": "Начальное значение констант пользователя",
+          "description": "Определяет начальные значения пользовательских констант",
+          "dataType": "enum",
+          "range": "0~2",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "O",
+          "options": [
+            {"value": 0, "description": "Не изменяются"},
+            {"value": 1, "description": "Запоминаются по умолчанию"},
+            {"value": 2, "description": "Очистить"}
+          ]
+        },
+        {
+          "code": "O2-04",
+          "modbusAddress": "0508h",
+          "name": "Установка номинальной мощности преобразователя",
+          "description": "Задает номинальную мощность преобразователя частоты",
+          "dataType": "uint8",
+          "range": "0~255",
+          "unit": "",
+          "defaultValue": "—",
+          "accessLevel": "O"
+        },
+        {
+          "code": "O2-05",
+          "modbusAddress": "0509h",
+          "name": "Запись частоты при задании от пульта управления без нажатия кнопки ВВОД",
+          "description": "Разрешает запись частоты без подтверждения кнопкой ВВОД",
+          "dataType": "enum",
+          "range": "0~1",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "P",
+          "options": [
+            {"value": 0, "description": "Невозможна"},
+            {"value": 1, "description": "Возможна"}
+          ]
+        },
+        {
+          "code": "O2-06",
+          "modbusAddress": "050Ah",
+          "name": "Выбор работы при отключении пульта управления",
+          "description": "Определяет поведение привода при отключении пульта управления",
+          "dataType": "enum",
+          "range": "0~1",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "P",
+          "options": [
+            {"value": 0, "description": "Работа продолжается"},
+            {"value": 1, "description": "Останов выбегом с выдачей ошибки OPR"}
+          ]
+        },
+        {
+          "code": "O2-07",
+          "modbusAddress": "050Bh",
+          "name": "Общее время работы",
+          "description": "Отображает общее время работы преобразователя",
+          "dataType": "uint16",
+          "range": "0~65535",
+          "unit": "ч",
+          "defaultValue": "-",
+          "accessLevel": "P"
+        },
+        {
+          "code": "O2-08",
+          "modbusAddress": "050Ch",
+          "name": "Выбор общего времени работы",
+          "description": "Определяет метод подсчета общего времени работы",
+          "dataType": "enum",
+          "range": "0~1",
+          "unit": "",
+          "defaultValue": "0",
+          "accessLevel": "P",
+          "options": [
+            {"value": 0, "description": "Время включения в сеть"},
+            {"value": 1, "description": "Время вращения двигателя"}
+          ]
+        }
+      ]
+    }
+  ]
+}
